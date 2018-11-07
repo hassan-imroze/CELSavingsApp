@@ -20,10 +20,24 @@ namespace CELSavings
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+                      "~/Scripts/bootstrap.js",
+                      "~/scripts/bootbox.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/dynamicform").Include(
+                       "~/Scripts/typeahead.bundle.js"
+                       , "~/Scripts/toastr.js"
+                       ));
+
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                     "~/Scripts/DataTables/jquery.dataTables.js",
+                     "~/Scripts/DataTables/dataTables.bootstrap4.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrap-flatly.css",
+                      //"~/Content/bootstrap-pulse.css",
+                      "~/Content/DataTables/css/dataTables.bootstrap4.css",
+                      "~/Content/typeahead.css",
+                      "~/Content/toastr.css",
                       "~/Content/site.css"));
         }
     }
