@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CELSavings", "CELSavings\CELSavings.csproj", "{5D79239F-1E50-458B-82E4-FA4C54B39C66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CELSavings.Tests", "CELSavings.Tests\CELSavings.Tests.csproj", "{6FF77CCD-8FC5-49AC-BD93-4991A48B4D8C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D79239F-1E50-458B-82E4-FA4C54B39C66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D79239F-1E50-458B-82E4-FA4C54B39C66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D79239F-1E50-458B-82E4-FA4C54B39C66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D79239F-1E50-458B-82E4-FA4C54B39C66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FF77CCD-8FC5-49AC-BD93-4991A48B4D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FF77CCD-8FC5-49AC-BD93-4991A48B4D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FF77CCD-8FC5-49AC-BD93-4991A48B4D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FF77CCD-8FC5-49AC-BD93-4991A48B4D8C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EEB6EE09-1684-47AB-B255-6D77635B2B7E}
+	EndGlobalSection
+EndGlobal
