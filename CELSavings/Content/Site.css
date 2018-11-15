@@ -24,3 +24,29 @@ textarea {
     max-width: 280px;
 }
 
+
+.popular {
+    color: darkgoldenrod;
+}
+
+.field-validation-error,
+label.error {
+    color: red;
+}
+
+.input-validation-error,
+input.error {
+    border: 1px solid red;
+}
+
+.validation-summary-errors {
+    color: red;
+}
+
+.fade {
+    opacity: 1;
+}
+
+.table td {
+    padding: 5px 12px;
+}
