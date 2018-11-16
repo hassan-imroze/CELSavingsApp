@@ -224,7 +224,12 @@
     <Compile Include="Migrations\201811111719301_SavingAccountChanged.Designer.cs">
       <DependentUpon>201811111719301_SavingAccountChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811151650135_SeedUsers.cs" />
+    <Compile Include="Migrations\201811151650135_SeedUsers.Designer.cs">
+      <DependentUpon>201811151650135_SeedUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\GlobalContants.cs" />
     <Compile Include="Models\LoginRelatedViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -417,6 +422,8 @@
     <Content Include="Content\DataTables\css\common.scss" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <None Include="Properties\PublishProfiles\celsa - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\celsa - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
@@ -570,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811111719301_SavingAccountChanged.resx">
       <DependentUpon>201811111719301_SavingAccountChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811151650135_SeedUsers.resx">
+      <DependentUpon>201811151650135_SeedUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
