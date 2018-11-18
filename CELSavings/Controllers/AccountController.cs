@@ -140,7 +140,8 @@ namespace CELSavings.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            return HttpNotFound();
+            //return View();
         }
 
         //
@@ -171,7 +172,15 @@ namespace CELSavings.Controllers
                     // Send an email with this link
                      string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                      var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    IdentityMessage identityMessage = new IdentityMessage
+                    {
+                        Destination = user.Email,
+                        Subject = "Confirm your account",
+                        Body = callbackUrl
+
+                    };
+                    MailSender.SendMail(identityMessage);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
                 }

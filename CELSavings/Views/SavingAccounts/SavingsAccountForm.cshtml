@@ -38,5 +38,19 @@
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dynamicform")
+
+    <script>
+        $(document).ready(function () {
+            let successMessage = "@TempData["SuccessMessage"]";
+            console.log(successMessage);
+            if (successMessage != null && successMessage != '') {
+                toastr.clear();
+                var notify = toastr.success(successMessage);
+                var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                $notifyContainer.css("margin-top", 65);
+            }
+        });
+    </script>
 }

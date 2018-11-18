@@ -1,8 +1,9 @@
-﻿using CELSavings.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
+using CELSavings.Models;
 
 namespace CELSavings.Repository
 {
@@ -49,6 +50,17 @@ namespace CELSavings.Repository
         {
             return _context.SavingAccounts.FirstOrDefault(x => x.Id == Id);
         }
+
+        public List<SavingAccount> GetSavingsAccounts(string query = null)
+        {
+            var savingsAccountQuery = _context.SavingAccounts.AsQueryable();
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                 savingsAccountQuery = savingsAccountQuery.Where(x => x.Name.Contains(query));
+            }
+            return savingsAccountQuery.ToList();
+        }
+
 
         public void Save(SavingAccount savingAccount)
         {
