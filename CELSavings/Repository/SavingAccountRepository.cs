@@ -69,6 +69,7 @@ namespace CELSavings.Repository
                 savingAccount.Balance = 0;
                 savingAccount.LastPaymentDate = null;
                 savingAccount.LastTransactionDate = null;
+                savingAccount.Status = MemberStatus.Live;
                 _context.SavingAccounts.Add(savingAccount);
             }
             else
@@ -77,6 +78,8 @@ namespace CELSavings.Repository
                 savingAccountInDb.Name = savingAccount.Name;
                 savingAccountInDb.AccountNo = savingAccount.AccountNo;
                 savingAccountInDb.Email = savingAccount.Email;
+                savingAccountInDb.Mobile = savingAccount.Mobile;
+                savingAccountInDb.NID = savingAccount.NID;
             }
 
             _context.SaveChanges();

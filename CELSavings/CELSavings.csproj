@@ -225,6 +225,7 @@
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SavingAccountsController.cs" />
     <Compile Include="CustomValidators\SavingAccountValidators.cs" />
+    <Compile Include="Dto\PaymentDto.cs" />
     <Compile Include="Dto\SavingAccountDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -575,6 +576,7 @@
     <Content Include="Views\SavingAccounts\List.cshtml" />
     <Content Include="Views\SavingAccounts\ListReadOnly.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Payment\AddPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

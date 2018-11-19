@@ -11,6 +11,7 @@ namespace CELSavings.Controllers
         // GET: Payment
         public ActionResult Index()
         {
+            ViewBag.Title = "Payment Status";
             return View();
         }
 
