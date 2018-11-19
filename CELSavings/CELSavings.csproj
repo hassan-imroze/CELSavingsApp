@@ -217,10 +217,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Components\Enums.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\SavingAccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\SavingAccountsController.cs" />
     <Compile Include="CustomValidators\SavingAccountValidators.cs" />
     <Compile Include="Dto\SavingAccountDto.cs" />
@@ -239,12 +241,18 @@
     <Compile Include="Migrations\201811151650135_SeedUsers.Designer.cs">
       <DependentUpon>201811151650135_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811191509275_AddPaymentAndTransaction.cs" />
+    <Compile Include="Migrations\201811191509275_AddPaymentAndTransaction.Designer.cs">
+      <DependentUpon>201811191509275_AddPaymentAndTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GlobalContants.cs" />
     <Compile Include="Models\LoginRelatedViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\SavingAccount.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\SavingAccountRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -566,6 +574,7 @@
     <Content Include="Views\SavingAccounts\SavingsAccountForm.cshtml" />
     <Content Include="Views\SavingAccounts\List.cshtml" />
     <Content Include="Views\SavingAccounts\ListReadOnly.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -592,6 +601,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811151650135_SeedUsers.resx">
       <DependentUpon>201811151650135_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811191509275_AddPaymentAndTransaction.resx">
+      <DependentUpon>201811191509275_AddPaymentAndTransaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
