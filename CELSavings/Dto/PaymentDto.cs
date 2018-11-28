@@ -9,6 +9,8 @@ namespace CELSavings.Dto
     {
         public int SavingAccountId { get; set; }
 
+        public string SavingAccount { get; set; }
+        
         public string PaymentMonth { get; set; }
 
         public decimal Amount { get; set; }

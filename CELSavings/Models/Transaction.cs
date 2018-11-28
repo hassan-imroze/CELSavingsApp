@@ -13,6 +13,8 @@ namespace CELSavings.Models
         [Required]
         public int SavingAccountId { get; set; }
 
+        public SavingAccount SavingAccount { get; set; }
+
         [Required]
         public DateTime TransactionDate { get; set; }
 
@@ -24,10 +26,14 @@ namespace CELSavings.Models
 
         [Required]
         public TransactionSide TransactionSide { get; set; }
-
         
         public decimal Amount { get; set; }
 
         public string Description { get; set; }
+
+        public int? PaymentId { get; set; }
+
+        public Payment Payment { get; set; }
+
     }
 }

@@ -15,7 +15,8 @@ namespace CELSavings.Controllers
             return View();
         }
 
-        public ActionResult AddPayment()
+        [Route("payment/{savingAccountId}")]
+        public ActionResult AddPayment(int savingAccountId)
         {
             ViewBag.Title = "Add Payment";
 

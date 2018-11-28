@@ -246,6 +246,18 @@
     <Compile Include="Migrations\201811191509275_AddPaymentAndTransaction.Designer.cs">
       <DependentUpon>201811191509275_AddPaymentAndTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811260157317_TransactionRelatedUpdate.cs" />
+    <Compile Include="Migrations\201811260157317_TransactionRelatedUpdate.Designer.cs">
+      <DependentUpon>201811260157317_TransactionRelatedUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811281558386_TransactionInsertTriggerCreated.cs" />
+    <Compile Include="Migrations\201811281558386_TransactionInsertTriggerCreated.Designer.cs">
+      <DependentUpon>201811281558386_TransactionInsertTriggerCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811281602232_PaymentRelatedTriggerCreated.cs" />
+    <Compile Include="Migrations\201811281602232_PaymentRelatedTriggerCreated.Designer.cs">
+      <DependentUpon>201811281602232_PaymentRelatedTriggerCreated.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GlobalContants.cs" />
     <Compile Include="Models\LoginRelatedViewModels.cs" />
@@ -255,6 +267,8 @@
     <Compile Include="Models\SavingAccount.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PaymentRepository.cs" />
+    <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\SavingAccountRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -606,6 +620,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811191509275_AddPaymentAndTransaction.resx">
       <DependentUpon>201811191509275_AddPaymentAndTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811260157317_TransactionRelatedUpdate.resx">
+      <DependentUpon>201811260157317_TransactionRelatedUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281558386_TransactionInsertTriggerCreated.resx">
+      <DependentUpon>201811281558386_TransactionInsertTriggerCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811281602232_PaymentRelatedTriggerCreated.resx">
+      <DependentUpon>201811281602232_PaymentRelatedTriggerCreated.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

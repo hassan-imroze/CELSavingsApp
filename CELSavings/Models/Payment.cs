@@ -21,5 +21,7 @@ namespace CELSavings.Models
         
         public decimal Amount { get; set; }
 
+        public ICollection<Transaction> Transactions { get; set; }
+
     }
 }
