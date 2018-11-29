@@ -14,7 +14,7 @@ namespace CELSavings.Models
         public int SavingAccountId { get; set; }
 
         [Required]
-        public DateTime PaymentDate { get; set; }
+        public DateTime PaymentMonthDate { get; set; }
 
         [Required]
         public string PaymentMonth { get; set; }

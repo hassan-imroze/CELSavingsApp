@@ -11,10 +11,10 @@ using System.Web.Http;
 
 namespace CELSavings.Controllers.Api
 {
-    public class SavingAccountsController : ApiController
+    public class PayableSavingAccountsController : ApiController
     {
-        // GET /api/savingaccounts
-        [HttpGet]
+
+        
         public IHttpActionResult Get(string query = null)
         {
             List<SavingAccount> savingsAccounts = new List<SavingAccount>();
@@ -24,8 +24,7 @@ namespace CELSavings.Controllers.Api
                 savingsAccounts = repo.GetSavingsAccounts(query);
             }
 
-            return Ok(savingsAccounts.Select(Mapper.Map<SavingAccount, SavingAccountDto>));
+            return Ok(savingsAccounts.Select(Mapper.Map<SavingAccount, PayableSavingAccountDto>));
         }
-
     }
 }

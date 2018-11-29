@@ -38,7 +38,7 @@ namespace CELSavings.Models
 
         public decimal Balance { get; set; }
 
-        public DateTime? LastPaymentDate { get; set; }
+        public DateTime? LastPaymentMonthDate { get; set; }
 
         public DateTime? LastTransactionDate { get; set; }
     }

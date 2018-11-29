@@ -50,13 +50,26 @@ namespace CELSavings.Repository
             }
             return savingsAccountQuery.ToList();
         }
-        
+
+        public List<SavingAccount> GetPayableSavingsAccounts(string query = null)
+        {
+            
+            var currentPaymentMonth = DateTime.Today.FirstDateOfMonth();
+            var savingsAccountQuery = _context.SavingAccounts.Where(x => x.LastPaymentMonthDate == null || x.LastPaymentMonthDate < currentPaymentMonth);
+
+            if (!string.IsNullOrWhiteSpace(query))
+            {
+                savingsAccountQuery = savingsAccountQuery.Where(x => x.Name.Contains(query));
+            }
+            return savingsAccountQuery.ToList();
+        }
+
         public void Save(SavingAccount savingAccount)
         {
             if (savingAccount.Id == 0)
             {
                 savingAccount.Balance = 0;
-                savingAccount.LastPaymentDate = null;
+                savingAccount.LastPaymentMonthDate = null;
                 savingAccount.LastTransactionDate = null;
                 savingAccount.Status = MemberStatus.Live;
                 _context.SavingAccounts.Add(savingAccount);

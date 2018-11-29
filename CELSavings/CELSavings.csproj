@@ -218,13 +218,17 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Components\Enums.cs" />
+    <Compile Include="Components\global.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\PayableSavingAccountsController.cs" />
+    <Compile Include="Controllers\Api\PaymentsController.cs" />
     <Compile Include="Controllers\Api\SavingAccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PaymentController.cs" />
+    <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\SavingAccountsController.cs" />
     <Compile Include="CustomValidators\SavingAccountValidators.cs" />
+    <Compile Include="Dto\PayableSavingAccountDto.cs" />
     <Compile Include="Dto\PaymentDto.cs" />
     <Compile Include="Dto\SavingAccountDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -257,6 +261,10 @@
     <Compile Include="Migrations\201811281602232_PaymentRelatedTriggerCreated.cs" />
     <Compile Include="Migrations\201811281602232_PaymentRelatedTriggerCreated.Designer.cs">
       <DependentUpon>201811281602232_PaymentRelatedTriggerCreated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811290446225_PaymentDateColumnNameChanged.cs" />
+    <Compile Include="Migrations\201811290446225_PaymentDateColumnNameChanged.Designer.cs">
+      <DependentUpon>201811290446225_PaymentDateColumnNameChanged.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GlobalContants.cs" />
@@ -438,6 +446,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -589,8 +598,8 @@
     <Content Include="Views\SavingAccounts\SavingsAccountForm.cshtml" />
     <Content Include="Views\SavingAccounts\List.cshtml" />
     <Content Include="Views\SavingAccounts\ListReadOnly.cshtml" />
-    <Content Include="Views\Payment\Index.cshtml" />
-    <Content Include="Views\Payment\AddPayment.cshtml" />
+    <Content Include="Views\Payments\Index.cshtml" />
+    <Content Include="Views\Payments\AddPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -629,6 +638,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811281602232_PaymentRelatedTriggerCreated.resx">
       <DependentUpon>201811281602232_PaymentRelatedTriggerCreated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811290446225_PaymentDateColumnNameChanged.resx">
+      <DependentUpon>201811290446225_PaymentDateColumnNameChanged.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

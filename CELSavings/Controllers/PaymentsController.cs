@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace CELSavings.Controllers
 {
-    public class PaymentController : Controller
+    public class PaymentsController : Controller
     {
         // GET: Payment
         public ActionResult Index()
@@ -15,8 +15,8 @@ namespace CELSavings.Controllers
             return View();
         }
 
-        [Route("payment/{savingAccountId}")]
-        public ActionResult AddPayment(int savingAccountId)
+        
+        public ActionResult AddPayment()
         {
             ViewBag.Title = "Add Payment";
 

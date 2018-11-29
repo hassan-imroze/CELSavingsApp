@@ -5,11 +5,14 @@ using System.Web;
 
 namespace CELSavings.Dto
 {
-    public class PaymentDto
+    public class PayableSavingAccountDto
     {
+    
         public int SavingsAccountId { get; set; }
-        
-        public decimal Amount { get; set; }
 
+        public string Name { get; set; }
+
+       
+        public string PaymentMonth { get; set; }
     }
 }
