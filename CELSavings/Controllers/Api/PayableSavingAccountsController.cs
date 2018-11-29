@@ -21,7 +21,7 @@ namespace CELSavings.Controllers.Api
 
             using (var repo = new SavingAccountRepository())
             {
-                savingsAccounts = repo.GetSavingsAccounts(query);
+                savingsAccounts = repo.GetPayableSavingsAccounts(query);
             }
 
             return Ok(savingsAccounts.Select(Mapper.Map<SavingAccount, PayableSavingAccountDto>));

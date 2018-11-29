@@ -1,4 +1,6 @@
 ﻿using CELSavings.Dto;
+using CELSavings.Models;
+using CELSavings.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,27 +16,20 @@ namespace CELSavings.Controllers.Api
         [HttpPost]
         public IHttpActionResult CreateRentals(PaymentDto newPaymentDto)
         {
+            if (newPaymentDto.SavingsAccountId <= 0)
+                return BadRequest("Savings Account is not available");
+            else if(newPaymentDto.Amount <=0)
+                return BadRequest("Amount must be greater than zero");
+            var newPayment = new Payment
+            {
+                SavingAccountId = newPaymentDto.SavingsAccountId,
+                Amount = newPaymentDto.Amount
+            };
 
-            //var customer = _context.Customers.First(x => x.Id == newRentalsDto.CustomerId);
-
-            //var movies = _context.Movies.Where(x => newRentalsDto.MovieIds.Contains(x.Id));
-
-            //foreach (var movie in movies)
-            //{
-            //    if (movie.NumberAvailable == 0)
-            //        return BadRequest("Movie is not Available");
-
-            //    movie.NumberAvailable--;
-            //    _context.Rentals.Add(
-            //        new Rental
-            //        {
-            //            CustomerId = customer.Id,
-            //            MovieId = movie.Id,
-            //            DateRented = DateTime.Today
-            //        });
-            //}
-            //_context.SaveChanges();
-
+            using (var repository = new PaymentRepository())
+            {
+                repository.Create(newPayment);
+            }
 
             return Ok();
 

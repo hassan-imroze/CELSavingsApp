@@ -218,7 +218,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Components\Enums.cs" />
-    <Compile Include="Components\global.cs" />
+    <Compile Include="Components\Global.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\PayableSavingAccountsController.cs" />
     <Compile Include="Controllers\Api\PaymentsController.cs" />
@@ -266,8 +266,11 @@
     <Compile Include="Migrations\201811290446225_PaymentDateColumnNameChanged.Designer.cs">
       <DependentUpon>201811290446225_PaymentDateColumnNameChanged.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811291502228_TransactionParentIdRemoved.cs" />
+    <Compile Include="Migrations\201811291502228_TransactionParentIdRemoved.Designer.cs">
+      <DependentUpon>201811291502228_TransactionParentIdRemoved.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\GlobalContants.cs" />
     <Compile Include="Models\LoginRelatedViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -641,6 +644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811290446225_PaymentDateColumnNameChanged.resx">
       <DependentUpon>201811290446225_PaymentDateColumnNameChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811291502228_TransactionParentIdRemoved.resx">
+      <DependentUpon>201811291502228_TransactionParentIdRemoved.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

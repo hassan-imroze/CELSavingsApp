@@ -18,9 +18,7 @@ namespace CELSavings.Models
         [Required]
         public DateTime TransactionDate { get; set; }
 
-        [Required]
-        public int ParentId { get; set; }
-
+        
         [Required]
         public TransactionType Type { get; set; }
 

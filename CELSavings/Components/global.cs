@@ -10,6 +10,11 @@ namespace CELSavings
         public static readonly DateTime STSTEMSTARTMONTH = DateTime.Parse("30 Nov 2018");
     }
 
+    public static class RoleName
+    {
+        public const string CanManageSavingAccounts = "CanManageSavingAccounts";
+    }
+
     public static class ExtentionMethods
     {
         public static DateTime FirstDateOfMonth(this DateTime date)
