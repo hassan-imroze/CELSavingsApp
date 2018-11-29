@@ -48,13 +48,13 @@
                 //prefetch: '../data/films/post_1960.json',
                 remote: {
                     url: '/api/payablesavingaccounts?query=%QUERY',
-                    wildcard: '%QUERY'
-
+                    wildcard: '%QUERY',
+                    cache: false
                 }
             });
 
             $('#txtAccount').typeahead({
-                minLength: 3,
+                minLength: 1,
                 hint: true,
                 highlight: true,
             }, {
@@ -101,7 +101,6 @@
                             amount: 0
                         };
                         validator.resetForm();
-                        //savingAccounts.clearRemoteCache();
 
                     })
                         .fail(function () {
