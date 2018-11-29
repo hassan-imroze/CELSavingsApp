@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CELSavings.Models;
+using CELSavings;
 using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace CELSavings.Controllers
@@ -179,7 +180,7 @@ namespace CELSavings.Controllers
                         Body = callbackUrl
 
                     };
-                    MailSender.SendMail(identityMessage);
+                    //MailSender.SendMail(identityMessage);
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     return RedirectToAction("Index", "Home");
