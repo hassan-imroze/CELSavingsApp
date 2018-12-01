@@ -12,6 +12,7 @@ namespace CELSavings
     public class MailSender 
     {
        
+        //private static const
 
         public static void SendMail(IdentityMessage message)
         {
@@ -23,14 +24,14 @@ namespace CELSavings
             #endregion
 
             MailMessage msg = new MailMessage();
-            msg.From = new MailAddress("hassan.imroze@gmail.com");
+            msg.From = new MailAddress("celsavingsassosiation.info@gmail.com");
             msg.To.Add(new MailAddress(message.Destination));
             msg.Subject = message.Subject;
             msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
             msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
 
             SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
-            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("hassan.imroze@gmail.com", "ibrahim15@Hassan");
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("celsavingsassosiation.info@gmail.com", "Cel1@3$5^");
             smtpClient.Credentials = credentials;
             smtpClient.EnableSsl = true;
             smtpClient.Send(msg);

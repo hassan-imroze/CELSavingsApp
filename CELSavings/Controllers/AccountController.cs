@@ -75,6 +75,17 @@ namespace CELSavings.Controllers
                 return View(model);
             }
 
+            // Require the user to have a confirmed email before they can log on.
+            var user = await UserManager.FindByNameAsync(model.Email);
+            if (user != null)
+            {
+                if (!await UserManager.IsEmailConfirmedAsync(user.Id))
+                {
+                    ViewBag.errorMessage = "You must have a confirmed email to log on.";
+                    return View("Error");
+                }
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
@@ -141,8 +152,8 @@ namespace CELSavings.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return HttpNotFound();
-            //return View();
+            //return HttpNotFound();
+            return View();
         }
 
         //
@@ -167,7 +178,7 @@ namespace CELSavings.Controllers
                     //await UserManager.AddToRoleAsync(user.Id, RoleName.CanManageSavingAccounts);
                     //Temp End
 
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -176,14 +187,18 @@ namespace CELSavings.Controllers
                     IdentityMessage identityMessage = new IdentityMessage
                     {
                         Destination = user.Email,
-                        Subject = "Confirm your account",
+                        Subject = "'CEL Savings Association' account confirmation",
                         Body = callbackUrl
 
                     };
-                    //MailSender.SendMail(identityMessage);
+                    MailSender.SendMail(identityMessage);
                     //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    //return RedirectToAction("Index", "Home");
+                    ViewBag.Title = "Email Confirmation";
+                    ViewBag.Message = "Check your email and confirm your account, you must be confirmed "
+                            + "before you can log in.";
+                    return View("Info");
                 }
                 AddErrors(result);
             }

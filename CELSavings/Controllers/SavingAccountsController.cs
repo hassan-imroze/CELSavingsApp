@@ -22,6 +22,7 @@ namespace CELSavings.Controllers
             return View("ListReadOnly");
         }
 
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult New()
         {
             ViewBag.Title = "New Savings Account";
@@ -29,6 +30,7 @@ namespace CELSavings.Controllers
             return View("SavingsAccountForm", new SavingAccount());
         }
 
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult Edit(int Id)
         {
             ViewBag.Title = "Edit Savings Account";
@@ -43,6 +45,7 @@ namespace CELSavings.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult Save(SavingAccount savingAccount)
         {
             try

@@ -39,6 +39,12 @@
                     {
                         data: "email",
                         title: "Email"
+                    },
+                    {
+                        data: "balance",
+                        className: "text-right",
+                        render: $.fn.dataTable.render.number(',', '.', 4, ''),
+                        title: "Balance"
                     }
                 ]
                 //{

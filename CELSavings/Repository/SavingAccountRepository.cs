@@ -25,6 +25,16 @@ namespace CELSavings.Repository
 
         }
 
+        public bool EmailExists(string email)
+        {
+            bool exists = false;
+            if (!string.IsNullOrWhiteSpace(email))
+            {
+                exists = _context.SavingAccounts.Any(x => x.Email.Trim().ToLower() == email.Trim().ToLower());
+            }
+            return exists;
+        }
+
         public bool IsNameAlreadyExists(string name, int Id = 0)
         {
             bool exists = false;

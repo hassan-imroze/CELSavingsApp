@@ -14,7 +14,8 @@ namespace CELSavings.Controllers.Api
     {
         // POST /api/payments
         [HttpPost]
-        public IHttpActionResult CreateRentals(PaymentDto newPaymentDto)
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
+        public IHttpActionResult CreatePayments(PaymentDto newPaymentDto)
         {
             if (newPaymentDto.SavingsAccountId <= 0)
                 return BadRequest("Savings Account is not available");

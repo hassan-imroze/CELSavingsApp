@@ -15,7 +15,7 @@ namespace CELSavings.Controllers
             return View();
         }
 
-        
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult AddPayment()
         {
             ViewBag.Title = "Add Payment";

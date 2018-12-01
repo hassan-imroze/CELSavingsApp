@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using CELSavings.CustomValidators;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace CELSavings.Models
@@ -67,6 +68,7 @@ namespace CELSavings.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
+        [EmailDoesNotExists]
         public string Email { get; set; }
 
         [Required]
