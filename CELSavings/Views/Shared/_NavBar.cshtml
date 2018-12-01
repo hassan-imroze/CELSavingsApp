@@ -1,40 +1,40 @@
 ﻿@model System.String
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
     <div class="container">
-        @Html.ActionLink(Model, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <button class="navbar-toggler"
                 type="button" data-toggle="collapse"
                 data-target="#navbarColor02" aria-controls="navbarColor02"
                 aria-expanded="false" aria-label="Toggle navigation" style="">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @Html.ActionLink(Model, "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         <div class="collapse navbar-collapse" id="navbarColor02">
-            <ul class="navbar-nav mr-auto">
+            <ul class="nav navbar-nav mr-auto">
                 @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navMemberDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Members
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navMemberDropdown">
-                @Html.ActionLink("Member's List", "Index", "SavingAccounts", new { area = "" }, new { @class = "dropdown-item" })
-                @Html.ActionLink("Add Member", "New", "SavingAccounts", new { area = "" }, new { @class = "dropdown-item" })
+                    <a class="nav-link dropdown-toggle" href="#" id="navMemberDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Members
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navMemberDropdown">
+                        @Html.ActionLink("Member's List", "Index", "SavingAccounts", new { area = "" }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Add Member", "New", "SavingAccounts", new { area = "" }, new { @class = "dropdown-item" })
 
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navPaymentDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Payments
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navPaymentDropdown">
-                @Html.ActionLink("Add Pament", "AddPayment", "Payments", new { area = "" }, new { @class = "dropdown-item" })
-            </div>
-        </li>*@
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a id="navPaymentDropdown" class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Payments
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navPaymentDropdown">
+                        @Html.ActionLink("Add Pament", "AddPayment", "Payments", new { area = "" }, new { @class = "dropdown-item" })
+                    </div>
+                </li>*@
                 <li class="nav-item"> @Html.ActionLink("Member's List", "Index", "SavingAccounts", new { area = "" }, new { @class = "nav-link" })</li>
                 <li class="nav-item"> @Html.ActionLink("Add Member", "New", "SavingAccounts", new { area = "" }, new { @class = "nav-link" })</li>
                 <li class="nav-item">@Html.ActionLink("Add Pament", "AddPayment", "Payments", new { area = "" }, new { @class = "nav-link" })</li>
                 @*<li class="nav-item">@Html.ActionLink("Payment Status", "Index", "Payments", new { area = "" }, new { @class = "nav-link" })</li>*@
 
                 @*<li class="nav-item">@Html.ActionLink("About Us", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-        <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>*@
 
             </ul>
             @Html.Partial("_LoginPartial")
