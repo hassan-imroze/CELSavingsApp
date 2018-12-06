@@ -22,9 +22,23 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(m => m.NID)
+        @Html.TextBoxFor(m => m.NID, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(m => m.Email)
         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
         @Html.ValidationMessageFor(m => m.Email)
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.Mobile)
+        @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
+
     </div>
 
     @Html.HiddenFor(m => m.Id);
@@ -38,5 +52,19 @@
 
 @section scripts
 {
-    @Scripts.Render("~/bundles/jqueryval");
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dynamicform")
+
+    <script>
+        $(document).ready(function () {
+            let successMessage = "@TempData["SuccessMessage"]";
+            console.log(successMessage);
+            if (successMessage != null && successMessage != '') {
+                toastr.clear();
+                var notify = toastr.success(successMessage);
+                var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                $notifyContainer.css("margin-top", 65);
+            }
+        });
+    </script>
 }

@@ -1,0 +1,123 @@
+﻿<style>
+    .form-control{
+        width: 280px;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+<form id="newPayment">
+
+    <div class="form-group">
+        <label>Savings Account</label>
+        <div class="tt-container">
+            <input id="txtAccount" name="account" data-rule-validAccount="true" required type="text" value="" class="form-control" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Payment Month</label>
+        <input type="text" class="form-control"  id="txtPaymentMonth" name="paymentMonth" value="" readonly >
+    </div>
+
+    <div class="form-group">
+        <label>Payment Amount:</label>
+        <input type="number" data-rule-validAmount="true" name="amount" id="txtAmount" class="form-control">
+    </div>
+
+    <br />
+    <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/dynamicform")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+            var vm = {
+                savingsAccountId: 0,
+                amount: 0
+            };
+
+            var savingAccounts = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                //prefetch: '../data/films/post_1960.json',
+                remote: {
+                    url: '/api/payablesavingaccounts?query=%QUERY',
+                    wildcard: '%QUERY',
+                    cache: false
+                }
+            });
+
+            $('#txtAccount').typeahead({
+                minLength: 1,
+                hint: true,
+                highlight: true,
+            }, {
+                    name: 'savingaccounts',
+                    display: 'name',
+                    source: savingAccounts,
+                    //limit: 'Infinity'
+                }).on("typeahead:select", function (e, savingAccount) {
+                    console.log(savingAccount);
+                    vm.savingsAccountId = savingAccount.savingsAccountId;
+                    $("#txtPaymentMonth").val(savingAccount.paymentMonth);
+                });
+
+
+
+            $.validator.addMethod("validAccount", function () {
+                return vm.savingsAccountId && vm.savingsAccountId !== 0;
+            }, "Please select a valid savings account.")
+
+            $.validator.addMethod("validAmount", function () {
+                return parseFloat($("#txtAmount").val()) > 0;
+            }, "Payment amount must be greater than zero.")
+
+
+            var validator = $("#newPayment").validate({
+                submitHandler: function () {
+                    //e.preventDefault();
+                    vm.amount = parseFloat($("#txtAmount").val());
+                    $.ajax({
+                        url: '/api/payments',
+                        method: 'post',
+                        data: vm
+
+                    }).done(function () {
+                        toastr.clear();
+                        var notify = toastr.success("Payment successfully recorded.");
+                        var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                        $notifyContainer.css("margin-top", 65);
+                        $("#txtAccount").typeahead("val", "");
+                        $("#txtPaymentMonth").val("");
+                        $("#txtAmount").val("");
+                        vm = {
+                            savingsAccountId: 0,
+                            amount: 0
+                        };
+                        validator.resetForm();
+
+                    })
+                        .fail(function () {
+                            toastr.clear();
+                            var notify = toastr.error("Something unexpected happened.");
+                            var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                            $notifyContainer.css("margin-top", 65);
+                        });
+
+                    return false;
+                }
+            });
+
+
+            // Document Ready End
+        });
+
+
+    </script>
+}

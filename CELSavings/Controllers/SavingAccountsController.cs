@@ -14,9 +14,15 @@ namespace CELSavings.Controllers
         public ActionResult Index()
         {
             ViewBag.Title = "Savings Account Members";
-            return View();
+            if (User.IsInRole(RoleName.CanManageSavingAccounts))
+            {
+                return View("List");
+            }
+
+            return View("ListReadOnly");
         }
 
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult New()
         {
             ViewBag.Title = "New Savings Account";
@@ -24,6 +30,7 @@ namespace CELSavings.Controllers
             return View("SavingsAccountForm", new SavingAccount());
         }
 
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult Edit(int Id)
         {
             ViewBag.Title = "Edit Savings Account";
@@ -38,6 +45,7 @@ namespace CELSavings.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult Save(SavingAccount savingAccount)
         {
             try
@@ -52,6 +60,7 @@ namespace CELSavings.Controllers
                 {
                     repository.Save(savingAccount);
                 }
+                TempData["SuccessMessage"] = string.Format("Member {0} successfully.", isNew ? "saved" : "updated");
                 return isNew ? RedirectToAction("New") : RedirectToAction("Index");
             }
             catch (Exception ex)

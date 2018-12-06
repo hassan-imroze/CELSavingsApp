@@ -1,0 +1,103 @@
+﻿
+
+<h2>@ViewBag.Title</h2>
+
+<br />
+<div>
+    @Html.ActionLink("Create Account", "New", "SavingAccounts", null, new { @class = "btn btn-primary" })
+</div>
+<br />
+
+
+<table id="tblSavingsAccounts" class="table table-bordered table-hover" style="width:100%">
+    <thead class="thead-light">
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/datatables")
+    @Scripts.Render("~/bundles/dynamicform")
+
+    <script>
+        $(document).ready(function () {
+
+            let successMessage = "@TempData["SuccessMessage"]";
+            console.log(successMessage);
+            if (successMessage != null && successMessage != '') {
+                toastr.clear();
+                var notify = toastr.success(successMessage);
+                var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                $notifyContainer.css("margin-top", 65);
+            }
+
+            var table = $("#tblSavingsAccounts").DataTable({
+                ajax: {
+                    url: "/api/savingaccounts",
+                    method: "GET",
+                    dataSrc: ""
+                },
+                //pageLength: 6,
+                columns: [
+                    {
+                        data: "accountNo",
+                        title: "Account No"
+                    },
+                    {
+                        data: "name",
+                        title: "Name",
+                        render: function (data, type, account) {
+                            return "<a href='/SavingAccounts/edit/" + account.id + "'>" + data + "</a>";
+                        }
+                    },
+                    {
+                        data: "email",
+                        title: "Email"
+                    },
+                    {
+                        data: "balance",
+                        className: "text-right",
+                        render: $.fn.dataTable.render.number(',', '.', 4, ''),
+                        title: "Balance"
+                    }
+                ]
+                    //{
+                    //    data: "id",
+                    //    title: "Delete",
+                    //    render: function (data, type, movie) {
+                    //        return "<button data-movie-id='" + data + "' data-movie-name='" + movie.name + "' class='btn btn-sm btn-danger js-delete'>Delete</button>";
+                    //    }
+                    //}
+
+            });
+
+            //$("#tblSavingsAccounts").on("click", ".js-delete", function () {
+            //    var button = $(this);
+            //    console.log(button.attr("data-movie-id"));
+
+            //    bootbox.confirm({
+            //        title: "Delete Movie ?",
+            //        message: "Sure you want to delete this movie with name: <b>'" + button.attr("data-movie-name") + "'</b> ?",
+            //        closeButton: false,
+            //        backdrop: true,
+            //        callback: function (result) {
+            //            console.log(result);
+            //            if (result) {
+            //                $.ajax({
+            //                    url: "/api/movies/" + button.attr("data-movie-id"),
+            //                    method: "DELETE",
+            //                    success: function () {
+            //                        table.row(button.parents("tr")).remove().draw();
+            //                    }
+            //                });
+            //            }
+            //        }
+            //    });
+            //});
+        });
+    </script>
+
+}
