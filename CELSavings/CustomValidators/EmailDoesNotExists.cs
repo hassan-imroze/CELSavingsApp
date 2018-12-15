@@ -9,7 +9,7 @@ using System.Web;
 namespace CELSavings.CustomValidators
 {
     
-    public class EmailDoesNotExists : ValidationAttribute
+    public class EmailDoesNotExistsInSavingsAccount : ValidationAttribute
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {

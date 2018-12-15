@@ -68,7 +68,7 @@ namespace CELSavings.Models
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
-        [EmailDoesNotExists]
+        [EmailDoesNotExistsInSavingsAccount]
         public string Email { get; set; }
 
         [Required]
