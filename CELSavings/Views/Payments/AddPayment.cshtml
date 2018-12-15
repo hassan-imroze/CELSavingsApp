@@ -41,7 +41,7 @@
                 savingsAccountId: 0,
                 amount: 0
             };
-
+            $("#txtAmount").val("2000");
             var savingAccounts = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -95,7 +95,7 @@
                         $notifyContainer.css("margin-top", 65);
                         $("#txtAccount").typeahead("val", "");
                         $("#txtPaymentMonth").val("");
-                        $("#txtAmount").val("");
+                        $("#txtAmount").val("2000");
                         vm = {
                             savingsAccountId: 0,
                             amount: 0

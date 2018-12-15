@@ -606,6 +606,7 @@
     <Content Include="Views\Payments\Index.cshtml" />
     <Content Include="Views\Payments\AddPayment.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
+    <Content Include="Views\Home\AccountHolderDashboard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

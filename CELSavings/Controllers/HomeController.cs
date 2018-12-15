@@ -8,10 +8,24 @@ namespace CELSavings.Controllers
 {
     public class HomeController : Controller
     {
+       
+
         [AllowAnonymous]
         public ActionResult Index()
         {
-            return View();
+            if (!Request.IsAuthenticated)
+            {
+                return View();
+            }
+            else if(User.IsInRole(RoleName.CanManageSavingAccounts))
+            {
+                return View();
+            }
+            else
+            {
+                ViewBag.UserEmail = User.Identity.Name;
+                return View("AccountHolderDashboard");
+            }
         }
 
         public ActionResult About()
