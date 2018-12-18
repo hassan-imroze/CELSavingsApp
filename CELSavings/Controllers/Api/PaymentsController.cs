@@ -1,4 +1,5 @@
-﻿using CELSavings.Dto;
+﻿using AutoMapper;
+using CELSavings.Dto;
 using CELSavings.Models;
 using CELSavings.Repository;
 using System;
@@ -34,6 +35,21 @@ namespace CELSavings.Controllers.Api
 
             return Ok();
 
+        }
+
+        [HttpGet]
+        [Route("api/payments/latestByEmailAddress/{emailAddress}/")]
+        public IHttpActionResult GetLatestEmailAddressWise(string emailAddress)
+        {
+            List<Payment> payments = new List<Payment>();
+
+            using (var repo = new PaymentRepository())
+            {
+                payments = repo.GetTop5PaymentsByEmailAddress(emailAddress);
+            }
+
+            return Ok(payments.Select(Mapper.Map<Payment, PaymentListDto>));
+            
         }
     }
 }

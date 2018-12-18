@@ -25,6 +25,11 @@ namespace CELSavings
                                GlobalConstants.STSTEMSTARTMONTH.FormattedMonth() : 
                                m.LastPaymentMonthDate.Value.AddDays(2).FormattedMonth()));
 
+            CreateMap<Payment, PaymentListDto>()
+               .ForMember(dto => dto.AccountNo, opt => opt.MapFrom(m => m.SavingAccount.AccountNo))
+               .ForMember(dto => dto.PaymentMonth, opt => opt.MapFrom(m => m.PaymentMonth))
+               .ForMember(dto => dto.PaymentAmount,opt => opt.MapFrom(m => m.Amount));
+
 
         }
     }

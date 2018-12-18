@@ -1,6 +1,7 @@
 ﻿using CELSavings.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -35,5 +36,21 @@ namespace CELSavings.Repository
             _context.Payments.Add(payment);
             _context.SaveChanges();
         }
+
+
+        public List<Payment> GetTop5PaymentsByEmailAddress(string emailAddress)
+        {
+            if (!string.IsNullOrWhiteSpace(emailAddress))
+            {
+                return _context.Payments
+                               .Include(x=>x.SavingAccount)
+                               .Where(x => x.SavingAccount.Email.Trim().ToLower() == emailAddress.Trim().ToLower())
+                               .OrderByDescending(x=>x.PaymentMonthDate)
+                               .Take(5)
+                               .ToList();
+            }
+            return new List<Payment>();
+        }
+
     }
 }

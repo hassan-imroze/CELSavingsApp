@@ -61,6 +61,16 @@ namespace CELSavings.Repository
             return savingsAccountQuery.ToList();
         }
 
+        public List<SavingAccount> GetSavingsAccountsByEmailAddress(string emailAddress)
+        {
+            if (!string.IsNullOrWhiteSpace(emailAddress))
+            {
+                return _context.SavingAccounts.Where(x => x.Email.Trim().ToLower() == emailAddress.Trim().ToLower()).ToList();
+                
+            }
+            return new List<SavingAccount>();
+        }
+
         public List<SavingAccount> GetPayableSavingsAccounts(string query = null)
         {
             

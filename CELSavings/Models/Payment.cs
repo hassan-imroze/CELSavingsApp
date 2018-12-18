@@ -13,6 +13,8 @@ namespace CELSavings.Models
         [Required]
         public int SavingAccountId { get; set; }
 
+        public SavingAccount SavingAccount { get; set; }
+
         [Required]
         public DateTime PaymentMonthDate { get; set; }
 

@@ -55,6 +55,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -227,11 +228,13 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\SavingAccountsController.cs" />
+    <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="CustomValidators\CodeShouldBeUnique.cs" />
     <Compile Include="CustomValidators\EmailDoesNotExists.cs" />
     <Compile Include="CustomValidators\NameShouldBeUnique.cs" />
     <Compile Include="Dto\PayableSavingAccountDto.cs" />
     <Compile Include="Dto\PaymentDto.cs" />
+    <Compile Include="Dto\PaymentListDto.cs" />
     <Compile Include="Dto\SavingAccountDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,6 +274,10 @@
     <Compile Include="Migrations\201811291502228_TransactionParentIdRemoved.cs" />
     <Compile Include="Migrations\201811291502228_TransactionParentIdRemoved.Designer.cs">
       <DependentUpon>201811291502228_TransactionParentIdRemoved.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812181738519_createrelationBetweenPaentandSavingAccount.cs" />
+    <Compile Include="Migrations\201812181738519_createrelationBetweenPaentandSavingAccount.Designer.cs">
+      <DependentUpon>201812181738519_createrelationBetweenPaentandSavingAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LoginRelatedViewModels.cs" />
@@ -607,6 +614,7 @@
     <Content Include="Views\Payments\AddPayment.cshtml" />
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Home\AccountHolderDashboard.cshtml" />
+    <Content Include="Views\Transactions\AccountStatement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -651,6 +659,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811291502228_TransactionParentIdRemoved.resx">
       <DependentUpon>201811291502228_TransactionParentIdRemoved.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812181738519_createrelationBetweenPaentandSavingAccount.resx">
+      <DependentUpon>201812181738519_createrelationBetweenPaentandSavingAccount.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
