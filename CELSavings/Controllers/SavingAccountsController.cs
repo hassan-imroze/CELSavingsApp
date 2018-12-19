@@ -11,6 +11,7 @@ namespace CELSavings.Controllers
     public class SavingAccountsController : Controller
     {
         // GET: SavingAccounts
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
         public ActionResult Index()
         {
             ViewBag.Title = "Savings Account Members";

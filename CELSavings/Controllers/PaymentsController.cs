@@ -11,8 +11,16 @@ namespace CELSavings.Controllers
         // GET: Payment
         public ActionResult Index()
         {
-            ViewBag.Title = "Payment Status";
-            return View();
+            if (User.IsInRole(RoleName.CanManageSavingAccounts))
+            {
+                ViewBag.Title = "Payment Status";
+                return View();
+            }
+            else
+            {
+                ViewBag.Title = "Payments";
+                return View();
+            }
         }
 
         [Authorize(Roles = RoleName.CanManageSavingAccounts)]

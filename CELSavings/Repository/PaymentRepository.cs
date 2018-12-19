@@ -38,18 +38,27 @@ namespace CELSavings.Repository
         }
 
 
-        public List<Payment> GetTop5PaymentsByEmailAddress(string emailAddress)
+        public List<Payment> GetPayments(bool includeSavingAccount = false, string accountEmail=null, int takeCount = 0)
         {
-            if (!string.IsNullOrWhiteSpace(emailAddress))
+
+            var paymentsQuery = _context.Payments.OrderByDescending(x => x.PaymentMonthDate).AsQueryable();
+            if(includeSavingAccount || !string.IsNullOrWhiteSpace(accountEmail))
             {
-                return _context.Payments
-                               .Include(x=>x.SavingAccount)
-                               .Where(x => x.SavingAccount.Email.Trim().ToLower() == emailAddress.Trim().ToLower())
-                               .OrderByDescending(x=>x.PaymentMonthDate)
-                               .Take(5)
-                               .ToList();
+                paymentsQuery = paymentsQuery.Include(x => x.SavingAccount);
             }
-            return new List<Payment>();
+            if (!string.IsNullOrWhiteSpace(accountEmail))
+            {
+                paymentsQuery = paymentsQuery
+                                .Where(x => x.SavingAccount.Email.Trim().ToLower() == accountEmail.Trim().ToLower());
+            }
+
+            if (takeCount>0)
+            {
+                paymentsQuery = paymentsQuery
+                                .OrderByDescending(x => x.PaymentMonthDate)
+                                .Take(5);
+            }
+            return paymentsQuery.ToList();
         }
 
     }

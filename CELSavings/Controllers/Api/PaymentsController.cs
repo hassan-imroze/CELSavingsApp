@@ -38,14 +38,14 @@ namespace CELSavings.Controllers.Api
         }
 
         [HttpGet]
-        [Route("api/payments/latestByEmailAddress/{emailAddress}/")]
-        public IHttpActionResult GetLatestEmailAddressWise(string emailAddress)
+        [Route("api/payments/latestByEmailAddress/{email}/")]
+        public IHttpActionResult GetEmailAddressWisePayments(string email)
         {
             List<Payment> payments = new List<Payment>();
 
             using (var repo = new PaymentRepository())
             {
-                payments = repo.GetTop5PaymentsByEmailAddress(emailAddress);
+                payments = repo.GetPayments(true,email,5);
             }
 
             return Ok(payments.Select(Mapper.Map<Payment, PaymentListDto>));
