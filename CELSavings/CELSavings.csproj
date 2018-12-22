@@ -225,10 +225,12 @@
     <Compile Include="Controllers\Api\PayableSavingAccountsController.cs" />
     <Compile Include="Controllers\Api\PaymentsController.cs" />
     <Compile Include="Controllers\Api\SavingAccountsController.cs" />
+    <Compile Include="Controllers\Api\SmallBusinessesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
     <Compile Include="Controllers\SavingAccountsController.cs" />
+    <Compile Include="Controllers\SmallBusinessesController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="CustomValidators\CodeShouldBeUnique.cs" />
     <Compile Include="CustomValidators\EmailDoesNotExists.cs" />
@@ -236,6 +238,7 @@
     <Compile Include="Dto\PayableSavingAccountDto.cs" />
     <Compile Include="Dto\PaymentDto.cs" />
     <Compile Include="Dto\PaymentListDto.cs" />
+    <Compile Include="Dto\SaveSmallBusinessDto.cs" />
     <Compile Include="Dto\SavingAccountDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -621,6 +624,7 @@
     <Content Include="Views\Account\Info.cshtml" />
     <Content Include="Views\Home\AccountHolderDashboard.cshtml" />
     <Content Include="Views\Transactions\AccountStatement.cshtml" />
+    <Content Include="Views\SmallBusinesses\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

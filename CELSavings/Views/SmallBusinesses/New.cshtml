@@ -1,0 +1,149 @@
+﻿<style>
+    .form-control {
+        width: 280px;
+    }
+</style>
+
+<h2>@ViewBag.Title</h2>
+
+
+<form id="newSmallBusiness">
+
+    <div class="form-group">
+        <label>Product</label>
+        <input type="text" id="txtProduct" name="product" data-rule-validProduct="true" required class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Product Description</label>
+        <textarea id="txtProductDescription" rows="4" required class="form-control"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Custmer Name</label>
+        @*<div class="tt-container">
+                <input id="txtAccount" name="account" data-rule-validAccount="true" required type="text" value="" class="form-control" />
+            </div>*@
+        <input id="txtCustomerName" name="name" class="form-control">
+    </div>
+    @*<div class="form-group">
+            <label>Payment Month</label>
+            <input type="text" class="form-control" id="txtPaymentMonth" name="paymentMonth" value="" readonly>
+        </div>*@
+
+    <div class="form-group">
+        <label>Payment Amount:</label>
+        <input type="number" name="amount" id="txtAmount" class="form-control">
+        @*<input type="number" data-rule-validAmount="true" name="amount" id="txtAmount" class="form-control">*@
+    </div>
+
+    <br />
+    <div class="form-group">
+        <button class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/dynamicform")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+            var vm = {
+                name: '',
+                amount: 0
+            };
+            //$("#txtAmount").val("2000");
+            //var savingAccounts = new Bloodhound({
+            //    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+            //    queryTokenizer: Bloodhound.tokenizers.whitespace,
+            //    //prefetch: '../data/films/post_1960.json',
+            //    remote: {
+            //        url: '/api/payablesavingaccounts?query=%QUERY',
+            //        wildcard: '%QUERY',
+            //        cache: false
+            //    }
+            //});
+
+            //$('#txtAccount').typeahead({
+            //    minLength: 1,
+            //    hint: true,
+            //    highlight: true,
+            //}, {
+            //        name: 'savingaccounts',
+            //        display: 'name',
+            //        source: savingAccounts,
+            //        //limit: 'Infinity'
+            //    }).on("typeahead:select", function (e, savingAccount) {
+            //        console.log(savingAccount);
+            //        vm.savingsAccountId = savingAccount.savingsAccountId;
+            //        $("#txtPaymentMonth").val(savingAccount.paymentMonth);
+            //    });
+
+
+
+            $.validator.addMethod("validProduct", function () {
+                var product = $("#txtProduct").val();
+                return product.length > 0;
+            }, "Please select a product name.")
+
+            $.validator.addMethod("validAmount", function () {
+                return true; // parseFloat($("#txtAmount").val()) > 0;
+            }, "Payment amount must be greater than zero.")
+
+
+            var validator = $("#newSmallBusiness").validate({
+                submitHandler: function () {
+                    //e.preventDefault();
+                    //vm.amount = parseFloat($("#txtAmount").val());
+                    $.ajax({
+                        url: '/api/smallbusinesses',
+                        method: 'post',
+                        data: vm
+
+                    }).done(function () {
+                        toastr.clear();
+                        var notify = toastr.success("Payment successfully recorded.");
+                        var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                        $notifyContainer.css("margin-top", 65);
+                        //$("#txtAccount").typeahead("val", "");
+                        //$("#txtPaymentMonth").val("");
+                       // $("#txtAmount").val("2000");
+                        vm = {
+                            name: '',
+                            amount: 0
+                        };
+                        validator.resetForm();
+
+                    })
+                        .fail(function (error) {
+                            toastr.clear();
+                            
+                            let str = "<ul>";
+                            
+                            for (var property in error.responseJSON.modelState) {
+                                if (error.responseJSON.modelState.hasOwnProperty(property)) {
+                                    console.log(property);
+
+                                    str += "<li>"+ error.responseJSON.modelState[property] + "</li>";
+                                }
+                            }
+                            str += "</ul>";
+                            var notify = toastr.error("Error occurred: <br>" + str); //error.responseJSON.message);
+                            var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                            $notifyContainer.css("margin-top", 65);
+                        });
+
+                    return false;
+                }
+            });
+
+
+            // Document Ready End
+        });
+
+
+    </script>
+}
