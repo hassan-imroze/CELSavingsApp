@@ -38,17 +38,25 @@ namespace CELSavings.Controllers.Api
         }
 
         [HttpGet]
-        [Route("api/payments/latestByEmailAddress/{email}/")]
-        public IHttpActionResult GetEmailAddressWisePayments(string email)
+        [Route("api/payments/summary/{email}/")]
+        public IHttpActionResult GetPaymentSummary(string email)
         {
             List<Payment> payments = new List<Payment>();
 
             using (var repo = new PaymentRepository())
             {
-                payments = repo.GetPayments(true,email,5);
+                payments = repo.GetPayments(true,email);
             }
 
-            return Ok(payments.Select(Mapper.Map<Payment, PaymentListDto>));
+            var paymentSummary = payments.GroupBy(l => l.SavingAccountId)
+                                 .Select(lg => new
+                                  {
+                                    lg.First().SavingAccount.AccountNo,
+                                    lg.First().SavingAccount.Name,
+                                    PaymentAmount = lg.Sum(x => x.Amount)
+                                  });
+
+            return Ok(paymentSummary);
             
         }
     }
