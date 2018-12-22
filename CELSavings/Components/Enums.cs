@@ -15,10 +15,12 @@ namespace CELSavings
     public enum TransactionType
     {
         Payment = 1,
-        Loan_Return = 2,
-        Investment = 3,
-        Profit = 4,
-        Other_Deduction = 5
+        Operating_Cost = 2,
+        Small_Business = 3,
+        Small_Business_Payment = 4,
+        Loan_Return = 5,
+        Investment = 6,
+        Profit = 7,
     }
 
     public enum TransactionSide

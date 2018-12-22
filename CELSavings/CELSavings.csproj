@@ -213,6 +213,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="Components\ApplicationDBContext.cs" />
     <Compile Include="Components\MailSender.cs" />
     <Compile Include="Components\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -279,12 +280,17 @@
     <Compile Include="Migrations\201812181738519_createrelationBetweenPaentandSavingAccount.Designer.cs">
       <DependentUpon>201812181738519_createrelationBetweenPaentandSavingAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812220617544_CreateSmallBusinessObjects.cs" />
+    <Compile Include="Migrations\201812220617544_CreateSmallBusinessObjects.Designer.cs">
+      <DependentUpon>201812220617544_CreateSmallBusinessObjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\LoginRelatedViewModels.cs" />
+    <Compile Include="ViewModels\LoginRelatedViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\SavingAccount.cs" />
+    <Compile Include="Models\SmallBusiness.cs" />
     <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\PaymentRepository.cs" />
@@ -662,6 +668,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812181738519_createrelationBetweenPaentandSavingAccount.resx">
       <DependentUpon>201812181738519_createrelationBetweenPaentandSavingAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812220617544_CreateSmallBusinessObjects.resx">
+      <DependentUpon>201812220617544_CreateSmallBusinessObjects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

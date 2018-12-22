@@ -33,5 +33,13 @@ namespace CELSavings.Models
 
         public Payment Payment { get; set; }
 
+        public int? SmallBusinessId { get; set; }
+
+        public SmallBusiness SmallBusiness { get; set; }
+
+        public int? SmallBusinessPaymentId { get; set; }
+
+        public SmallBusinessPayment SmallBusinessPayment { get; set; }
+
     }
 }
