@@ -14,9 +14,11 @@ namespace CELSavings.Dto
         [Required]
         public string ProductDescription { get; set; }
 
+        [Required]
+        public int CustomerOrGuarantorId { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string CustomerName { get; set; }
 
         [Range(1, Int32.MaxValue,ErrorMessage ="Value must be greater than zero")]
         public decimal Amount { get; set; }

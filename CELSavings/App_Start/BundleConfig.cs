@@ -39,6 +39,10 @@ namespace CELSavings
                       "~/Content/typeahead.css",
                       "~/Content/toastr.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/newsmallbusiness").Include(
+                    "~/Scripts/App/SmallBusinesses/new.js"));
+
         }
     }
 }
