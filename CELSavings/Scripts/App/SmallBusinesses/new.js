@@ -10,7 +10,13 @@
         name: '',
         amount: 0
     };
-    $("#txtBuyingPrice").val("0");
+    $("#txtBuyingPrice").val(0);
+    $("#txtProfitPercentage").val(8);
+    $("#txtSellingPrice").val(0);
+
+    $("#txtBuyingPrice").on('change', calculateProfit);
+    $("#txtProfitPercentage").on('change', calculateProfit);
+
     var savingAccounts = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -52,6 +58,15 @@
     $.validator.addMethod("validBuyingPrice", function () {
         return parseFloat($("#txtBuyingPrice").val()) > 0;
     }, "Buying price must be greater than zero");
+
+    $.validator.addMethod("validProfitPercentage", function () {
+        return parseFloat($("#txtProfitPercentage").val()) > 0;
+    }, "Profit percentage must be greater than zero");
+
+    $.validator.addMethod("validSellingPrice", function () {
+        return parseFloat($("#txtSellingPrice").val()) > 0;
+    }, "Selling price must be greater than zero");
+
 
     $.validator.addMethod("validAccount", function () {
         return vm.customerOrGuarantorId && vm.customerOrGuarantorId !== 0;
@@ -111,3 +126,12 @@
 
     // Document Ready End
 });
+
+var calculateProfit = function () {
+    let buyingPrice = Number($("#txtBuyingPrice").val());
+    console.log(buyingPrice);
+    let profitPercent = $("#txtProfitPercentage").val() / 100;
+    console.log(profitPercent);
+    let sellingPrice = buyingPrice + (buyingPrice * profitPercent);
+    $("#txtSellingPrice").val(sellingPrice);
+}; 
