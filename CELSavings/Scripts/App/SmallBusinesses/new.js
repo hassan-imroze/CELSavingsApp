@@ -3,6 +3,10 @@
         uiLibrary: 'bootstrap4',
         format: 'dd mmm yyyy'
     });
+    $('#installmentStart').datepicker({
+        uiLibrary: 'bootstrap4',
+        format: 'dd mmm yyyy'
+    });
     var vm = {
         product: '',
         productDescription: '',
