@@ -7,17 +7,9 @@
         uiLibrary: 'bootstrap4',
         format: 'dd mmm yyyy'
     });
-    var vm = {
-        product: '',
-        productDescription: '',
-        customerOrGuarantorId: 0,
-        name: '',
-        amount: 0
-    };
-    $("#txtBuyingPrice").val(0);
-    $("#txtProfitPercentage").val(8);
-    $("#txtSellingPrice").val(0);
-
+    var vm = initializeViewModel();
+    initializeControls();
+    
     $("#txtBuyingPrice").on('change', calculateProfit);
     $("#txtProfitPercentage").on('change', calculateProfit);
 
@@ -48,6 +40,18 @@
         });
 
 
+    var refreshObject = function () {
+        vm.product = $("#txtProduct").val();
+        vm.productDescription = $("#txtProductDescription").val();
+        vm.buyingPrice = parseFloat($("#txtBuyingPrice").val());
+        vm.profitPercentage = parseFloat($("#txtProfitPercentage").val());
+        vm.sellingPrice = parseFloat($("#txtSellingPrice").val());
+        vm.customerName = $("#txtCustomerName").val();
+        vm.customerPhone = $("#txtCustomerPhone").val();
+        vm.sellDate = $("#sellDate").val();
+        vm.initialPayment = parseFloat($("#txtInitialPayment").val());
+        vm.installmentStartDate = $("#installmentStart").val();
+    };
 
     $.validator.addMethod("validProduct", function () {
         var product = $("#txtProduct").val();
@@ -81,10 +85,12 @@
         return product.length > 0;
     }, "Customer name is required");
 
+   
     var validator = $("#newSmallBusiness").validate({
         submitHandler: function () {
             //e.preventDefault();
-            //vm.amount = parseFloat($("#txtAmount").val());
+
+            refreshObject();
             $.ajax({
                 url: '/api/smallbusinesses',
                 method: 'post',
@@ -92,16 +98,11 @@
 
             }).done(function () {
                 toastr.clear();
-                var notify = toastr.success("Payment successfully recorded.");
+                var notify = toastr.success("Small business successfully recorded.");
                 var $notifyContainer = jQuery(notify).closest('.toast-top-right');
                 $notifyContainer.css("margin-top", 65);
-                //$("#txtAccount").typeahead("val", "");
-                //$("#txtPaymentMonth").val("");
-                // $("#txtAmount").val("2000");
-                vm = {
-                    name: '',
-                    amount: 0
-                };
+                initializeControls();
+                vm = initializeViewModel();
                 validator.resetForm();
 
             })
@@ -131,11 +132,43 @@
     // Document Ready End
 });
 
+var initializeViewModel = function () {
+
+    return {
+        product: '',
+        productDescription: '',
+        buyingPrice: 0,
+        profitPercentage: 8,
+        sellingPrice: 0,
+        customerOrGuarantorId: 0,
+        customerName: '',
+        customerPhone: '',
+        sellDate: '',
+        initialPayment: 0,
+        installmentStartDate: ''
+    };
+};
+
+var initializeControls = function () {
+    $("#txtProduct").val('');
+    $("#txtProductDescription").val('');
+    $("#txtBuyingPrice").val(0);
+    $("#txtProfitPercentage").val(8);
+    $("#txtSellingPrice").val(0);
+    $("#txtAccount").typeahead("val", "");
+    $("#txtCustomerName").val('');
+    $("#txtCustomerPhone").val('');
+    $("#sellDate").val('');
+    $("#txtInitialPayment").val(0);
+    $("#installmentStart").val('');
+
+};
+
 var calculateProfit = function () {
     let buyingPrice = Number($("#txtBuyingPrice").val());
     console.log(buyingPrice);
     let profitPercent = $("#txtProfitPercentage").val() / 100;
     console.log(profitPercent);
-    let sellingPrice = buyingPrice + (buyingPrice * profitPercent);
+    let sellingPrice = buyingPrice + buyingPrice * profitPercent;
     $("#txtSellingPrice").val(sellingPrice);
 }; 

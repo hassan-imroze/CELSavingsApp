@@ -233,7 +233,11 @@
     <Compile Include="Controllers\SmallBusinessesController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="CustomValidators\CodeShouldBeUnique.cs" />
+    <Compile Include="CustomValidators\DateRequired.cs" />
     <Compile Include="CustomValidators\EmailDoesNotExists.cs" />
+    <Compile Include="CustomValidators\GreaterThanValidator.cs" />
+    <Compile Include="CustomValidators\LessThanEqualValidator.cs" />
+    <Compile Include="CustomValidators\LessThanTotalBalance.cs" />
     <Compile Include="CustomValidators\NameShouldBeUnique.cs" />
     <Compile Include="Dto\PayableSavingAccountDto.cs" />
     <Compile Include="Dto\PaymentDto.cs" />

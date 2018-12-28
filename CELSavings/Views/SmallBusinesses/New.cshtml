@@ -20,12 +20,12 @@
 
             <div class="form-group">
                 <label>Product Description</label>
-                <textarea id="txtProductDescription" rows="3" data-rule-validProductDescription="true" required class="form-control"></textarea>
+                <textarea id="txtProductDescription" rows="4" data-rule-validProductDescription="true" required class="form-control"></textarea>
             </div>
 
             <div class="form-group">
                 <label>Buying Price</label>
-                <input type="number" id="txtBuyingPrice" data-rule-validBuyingPrice="true" class="form-control">
+                <input type="number" id="txtBuyingPrice" name="buyingprice" data-rule-validBuyingPrice="true" required class="form-control">
             </div>
 
             <div class="form-group">
@@ -35,7 +35,7 @@
 
             <div class="form-group">
                 <label>Selling Price</label>
-                <input type="number" id="txtSellingPrice" readonly data-rule-validSellingPrice="true" class="form-control">
+                <input type="number" id="txtSellingPrice" name="sellingprice" readonly data-rule-validSellingPrice="true" class="form-control">
             </div>
 
         </div>
@@ -54,18 +54,23 @@
             </div>
 
             <div class="form-group">
-                <label>Sell Date</label>
-                <input type="text" id="sellDate" class="form-control" readonly width="280">
+                <label>Customer Phone</label>
+                <input type="text" id="txtCustomerPhone"  class="form-control">
             </div>
-            
+
+            <div class="form-group">
+                <label>Sell Date</label>
+                <input type="text" id="sellDate" name="selldate" class="form-control" readonly width="280">
+            </div>
+
             <div class="form-group">
                 <label>Initial Payment (if any)</label>
-                <input type="text" class="form-control">
+                <input type="number" id="txtInitialPayment" class="form-control">
             </div>
 
             <div class="form-group">
                 <label>Installment start</label>
-                <input type="text" id="installmentStart" class="form-control" readonly width="280">
+                <input type="text" id="installmentStart" name="installmentstart" class="form-control" readonly width="280">
             </div>
         </div>
     </div>
