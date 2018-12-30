@@ -291,7 +291,12 @@
     <Compile Include="Migrations\201812220617544_CreateSmallBusinessObjects.Designer.cs">
       <DependentUpon>201812220617544_CreateSmallBusinessObjects.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812301849588_SmallBusinessChanges.cs" />
+    <Compile Include="Migrations\201812301849588_SmallBusinessChanges.Designer.cs">
+      <DependentUpon>201812301849588_SmallBusinessChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Repository\SmallBusinessRepository.cs" />
     <Compile Include="ViewModels\LoginRelatedViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -680,6 +685,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201812220617544_CreateSmallBusinessObjects.resx">
       <DependentUpon>201812220617544_CreateSmallBusinessObjects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812301849588_SmallBusinessChanges.resx">
+      <DependentUpon>201812301849588_SmallBusinessChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

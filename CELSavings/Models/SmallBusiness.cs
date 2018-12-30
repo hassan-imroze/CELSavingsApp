@@ -15,18 +15,23 @@ namespace CELSavings.Models
 
         public string ProductDescription { get; set; }
 
+        
+        
         [Required]
-        public decimal BuyingPrice { get; set; }
+        public int CustomerOrGuarantorId { get; set; }
+
+        public SavingAccount CustomerOrGuarantor { get; set; }
 
         [Required]
         public string CustomerName { get; set; }
 
-        public string CustomerMobile { get; set; }
+        public string CustomerPhone { get; set; }
 
-        [Required(ErrorMessage = "Customer or Guarantor is Required.")]
-        public int CustomerOrGuarantorId { get; set; }
+        [Required]
+        public decimal BuyingPrice { get; set; }
 
-        public SavingAccount CustomerOrGuarantor { get; set; }
+        [Required]
+        public decimal ProfitPercentage { get; set; }
 
         [Required]
         public decimal SellingPrice { get; set; }
@@ -38,11 +43,32 @@ namespace CELSavings.Models
 
         public decimal PaymentReceived { get; set; }
 
+        public DateTime InstallmentStartDate { get; set; }
+
+        public DateTime? PaymentDueDate { get; set; }
+
+        public List<SmallBusinessSavingAccount> InvolvedSavingAccounts { get; set; }
+
         public List<Transaction> Transactions { get; set; }
 
         public List<SmallBusinessInstallment> Installments { get; set; }
 
         public List<SmallBusinessPayment> Payments { get; set; }
+    }
+
+    public class SmallBusinessSavingAccount
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public int SmallBusinessId { get; set; }
+
+        public SmallBusiness SmallBusiness { get; set; }
+
+        [Required]
+        public int SavingAccountId { get; set; }
+
+        public SavingAccount SavingAccount { get; set; }
     }
 
     public class SmallBusinessInstallment

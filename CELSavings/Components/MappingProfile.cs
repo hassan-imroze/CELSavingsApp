@@ -30,6 +30,21 @@ namespace CELSavings
                .ForMember(dto => dto.PaymentMonth, opt => opt.MapFrom(m => m.PaymentMonth))
                .ForMember(dto => dto.PaymentAmount,opt => opt.MapFrom(m => m.Amount));
 
+            CreateMap<SaveSmallBusinessDto, SmallBusiness>()
+              .ForMember(m => m.Product, opt => opt.MapFrom(dto => dto.Product))
+              .ForMember(m => m.ProductDescription, opt => opt.MapFrom(dto => dto.ProductDescription))
+              .ForMember(m => m.CustomerOrGuarantorId, opt => opt.MapFrom(dto => dto.CustomerOrGuarantorId))
+              .ForMember(m => m.CustomerName, opt => opt.MapFrom(dto => dto.CustomerName))
+              .ForMember(m => m.CustomerPhone, opt => opt.MapFrom(dto => dto.CustomerPhone))
+              .ForMember(m => m.BuyingPrice, opt => opt.MapFrom(dto => dto.BuyingPrice))
+              .ForMember(m => m.ProfitPercentage, opt => opt.MapFrom(dto => dto.ProfitPercentage))
+              .ForMember(m => m.SellingPrice, opt => opt.MapFrom(dto => dto.SellingPrice))
+              .ForMember(m => m.InitialPayment, opt => opt.MapFrom(dto => dto.InitialPayment))
+              .ForMember(m => m.PaymentReceived, opt => opt.MapFrom(dto => dto.InitialPayment))
+              .ForMember(m => m.SellDate, opt => opt.MapFrom(dto => dto.SellDate!=null? dto.SellDate.Value : DateTime.Today))
+              .ForMember(m => m.InstallmentStartDate, opt => opt.MapFrom(dto => dto.InstallmentStartDate != null ? dto.InstallmentStartDate.Value : DateTime.Today))
+              .ForMember(m=> m.PaymentDueDate,opt => opt.MapFrom(dto => dto.SellingPrice == dto.InitialPayment ? null : dto.InstallmentStartDate))
+              ;
 
         }
     }

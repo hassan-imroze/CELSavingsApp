@@ -1,4 +1,7 @@
-﻿using CELSavings.Dto;
+﻿using AutoMapper;
+using CELSavings.Dto;
+using CELSavings.Models;
+using CELSavings.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +19,13 @@ namespace CELSavings.Controllers.Api
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
-            
+
+            var smallBusiness = Mapper.Map<SaveSmallBusinessDto,SmallBusiness>(newSmallBusinessDto);
+
+            using (var repo = new SmallBusinessRepository())
+            {
+                repo.Create(smallBusiness);
+            }
 
             return Ok();
 
