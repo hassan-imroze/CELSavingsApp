@@ -29,7 +29,7 @@ namespace CELSavings.Repository
                     Description = string.Format("Payment of month: {0}",payment.PaymentMonth),
                     TransactionDate = DateTime.Today,
                     Type = TransactionType.Payment,
-                    TransactionSide = TransactionSide.Debit  
+                    TransactionSide = TransactionSide.Credit  
                 }
             };
 

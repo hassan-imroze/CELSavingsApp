@@ -1,7 +1,36 @@
-﻿
+﻿@model CELSavings.ViewModels.AccountStatementViewModel
 @{
     ViewBag.Title = "AccountStatement";
 }
 
-<h2>Coming Soon!!</h2>
+<div class="table-responsive-md">
 
+    <table class="table table-sm border">
+        <thead class="thead-light">
+            <tr>
+                <th colspan="4" scope="col">Account Statement</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">A/C No:</th>
+                <td class="align-middle">@Model.AccountNo</td>
+                <th scope="row">A/C Name:</th>
+                <td class="align-middle">@Model.AccountName</td>
+            </tr>
+            <tr>
+
+                <th scope="row">Email:</th>
+                <td class="align-middle">@Model.Email</td>
+                <th scope="row">Phone:</th>
+                <td class="align-middle">@Model.Mobile</td>
+            </tr>
+            <tr>
+                <th scope="row">NID:</th>
+                <td class="align-middle">@Model.NID</td>
+                <th scope="row"></th>
+                <td class="align-middle"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

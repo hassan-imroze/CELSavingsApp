@@ -51,6 +51,12 @@ namespace CELSavings.Repository
             return _context.SavingAccounts.FirstOrDefault(x => x.Id == Id);
         }
 
+        public SavingAccount GetByIdWithTransactions(int Id)
+        {
+            return _context.SavingAccounts.Include(x=> x.Transactions)
+                                          .FirstOrDefault(x => x.Id == Id);
+        }
+
         public List<SavingAccount> GetSavingsAccounts(string query = null)
         {
             var savingsAccountQuery = _context.SavingAccounts.AsQueryable();

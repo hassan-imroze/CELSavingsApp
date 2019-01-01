@@ -38,9 +38,10 @@ namespace CELSavings.Controllers
 
             var repository = new SavingAccountRepository();
             var savingAccount = repository.GetById(Id);
+            repository.Dispose();
             if (savingAccount == null)
                 return HttpNotFound();
-
+            
             return View("SavingsAccountForm", savingAccount);
         }
 

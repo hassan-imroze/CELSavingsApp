@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CELSavings.Models;
+using CELSavings.Repository;
+using CELSavings.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +15,24 @@ namespace CELSavings.Controllers
 
         public ActionResult AccountStatement(int Id)
         {
-            return View();
+            SavingAccount savingAccount = null;
+            using (var repository = new SavingAccountRepository())
+            {
+                savingAccount = repository.GetByIdWithTransactions(Id);
+            }
+
+            if (savingAccount == null)
+                return HttpNotFound();
+
+            if (!User.IsInRole(RoleName.CanManageSavingAccounts))
+            {
+                if (User.Identity.Name.ToLower().Trim() != savingAccount.Email.ToLower().Trim())
+                    return HttpNotFound();
+            }
+
+            var viewModel = AccountStatementViewModel.CreateObject(savingAccount);
+
+            return View(viewModel);
         }
     }
 }

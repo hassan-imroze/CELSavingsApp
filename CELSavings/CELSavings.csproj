@@ -297,6 +297,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Repository\SmallBusinessRepository.cs" />
+    <Compile Include="ViewModels\AccountStatementViewModel.cs" />
     <Compile Include="ViewModels\LoginRelatedViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />

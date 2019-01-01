@@ -41,5 +41,7 @@ namespace CELSavings.Models
         public DateTime? LastPaymentMonthDate { get; set; }
 
         public DateTime? LastTransactionDate { get; set; }
+
+        public List<Transaction> Transactions { get; set; }
     }
 }

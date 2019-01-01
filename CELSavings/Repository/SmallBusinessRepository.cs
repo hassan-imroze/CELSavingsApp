@@ -41,7 +41,7 @@ namespace CELSavings.Repository
                                                                   Description = string.Format("Small Business:- Product:{0}, Customer:{1}, Total Cost:{2} , Total accounts involved:{3} ", smallBusiness.Product, smallBusiness.CustomerName, totalCost.ToString("#,###.00"), smallBusiness.InvolvedSavingAccounts.Count),
                                                                   TransactionDate = DateTime.Today,
                                                                   Type = TransactionType.Small_Business,
-                                                                  TransactionSide = TransactionSide.Credit
+                                                                  TransactionSide = TransactionSide.Debit
                                                               })
                                                               .ToList();
                 }

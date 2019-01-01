@@ -25,8 +25,8 @@ namespace CELSavings
 
     public enum TransactionSide
     {
-        Debit = 1,
-        Credit = 2
+        Credit = 1,
+        Debit = 2
         
     }
 }
