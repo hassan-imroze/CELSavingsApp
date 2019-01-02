@@ -497,7 +497,9 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <None Include="Properties\PublishProfiles\celsa - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\celsa - FTP1.pubxml" />
     <None Include="Properties\PublishProfiles\celsa - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\celsa - Web Deploy1.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />

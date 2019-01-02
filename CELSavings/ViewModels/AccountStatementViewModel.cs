@@ -18,6 +18,7 @@ namespace CELSavings.ViewModels
 
         public string NID { get; set; }
 
+        public List<AccountStatementDetailViewModel> Details { get; set; }
 
         public static AccountStatementViewModel CreateObject(SavingAccount savingAccount)
         {
@@ -30,7 +31,41 @@ namespace CELSavings.ViewModels
                 NID = string.IsNullOrWhiteSpace(savingAccount.NID) ? string.Empty : savingAccount.NID
             };
 
+            accountStatementViewModel.Details = new List<AccountStatementDetailViewModel>();
+
+            int serial = 0;
+            decimal runningTotal = 0;
+            foreach (var item in savingAccount.Transactions.OrderBy(x => x.TransactionDate))
+            {
+                runningTotal += item.TransactionSide == TransactionSide.Credit ? item.Amount : (-item.Amount);
+                accountStatementViewModel.Details.Add(new AccountStatementDetailViewModel
+                {
+                    Serial = ++serial,
+                    TranDate = item.TransactionDate.FormattedDate(),
+                    Description = item.Description,
+                    Debit = item.TransactionSide == TransactionSide.Debit ? item.Amount : 0,
+                    Credit = item.TransactionSide == TransactionSide.Credit ? item.Amount : 0,
+                    Balance = runningTotal
+                });
+            }
+
             return accountStatementViewModel;
         }
+    }
+
+    public class AccountStatementDetailViewModel
+    {
+        public int Serial { get; set; }
+        
+        public string TranDate { get; set; }
+
+        public string Description { get; set; }
+
+        public decimal Debit { get; set; }
+
+        public decimal Credit { get; set; }
+        
+        public decimal Balance { get; set; }
+        
     }
 }
