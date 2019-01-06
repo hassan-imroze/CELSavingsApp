@@ -73,10 +73,21 @@
                     },
                     {
                         data: "id",
-                        title: "Payment",
                         className: "text-center",
-                        render: $.fn.dataTable.render.number(',', '.', 4, ''),
+                        title: "Payment",
+                        render: function (data, type, obj) {
+                            return "<a class='btn btn-secondary btn-sm btn-block' href='/SmallBusinesses/AddPayment/" + data + "'>Add</a>";
+                        }
                         
+                    },
+                    {
+                        data: "id",
+                        className: "text-center",
+                        title: "Detail",
+                        render: function (data, type, obj) {
+                            return "<a class='btn btn-secondary btn-sm btn-block' href='/SmallBusinesses/Details/" + data + "' target='_blank'>View</a>";
+                        }
+
                     }
                 ]
                     //{
@@ -88,30 +99,7 @@
                     //}
 
             });
-
-            //$("#tblSavingsAccounts").on("click", ".js-delete", function () {
-            //    var button = $(this);
-            //    console.log(button.attr("data-movie-id"));
-
-            //    bootbox.confirm({
-            //        title: "Delete Movie ?",
-            //        message: "Sure you want to delete this movie with name: <b>'" + button.attr("data-movie-name") + "'</b> ?",
-            //        closeButton: false,
-            //        backdrop: true,
-            //        callback: function (result) {
-            //            console.log(result);
-            //            if (result) {
-            //                $.ajax({
-            //                    url: "/api/movies/" + button.attr("data-movie-id"),
-            //                    method: "DELETE",
-            //                    success: function () {
-            //                        table.row(button.parents("tr")).remove().draw();
-            //                    }
-            //                });
-            //            }
-            //        }
-            //    });
-            //});
+            
         });
     </script>
 

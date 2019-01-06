@@ -640,9 +640,12 @@
     <Content Include="Views\Transactions\AccountStatement.cshtml" />
     <Content Include="Views\SmallBusinesses\New.cshtml" />
     <Content Include="Views\SmallBusinesses\Index.cshtml" />
+    <Content Include="Views\SmallBusinesses\Details.cshtml" />
+    <Content Include="Views\SmallBusinesses\AddPayment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Tesyt\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
