@@ -244,6 +244,7 @@
     <Compile Include="Dto\PaymentListDto.cs" />
     <Compile Include="Dto\SaveSmallBusinessDto.cs" />
     <Compile Include="Dto\SavingAccountDto.cs" />
+    <Compile Include="Dto\SmallBusinessListDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -638,6 +639,7 @@
     <Content Include="Views\Home\AccountHolderDashboard.cshtml" />
     <Content Include="Views\Transactions\AccountStatement.cshtml" />
     <Content Include="Views\SmallBusinesses\New.cshtml" />
+    <Content Include="Views\SmallBusinesses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

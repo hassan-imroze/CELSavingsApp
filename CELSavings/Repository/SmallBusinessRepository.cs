@@ -3,6 +3,7 @@ using CELSavings.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 
 namespace CELSavings.Repository
@@ -67,6 +68,10 @@ namespace CELSavings.Repository
             _context.SaveChanges();
         }
 
+        public List<SmallBusiness> GetAll()
+        {
+            return _context.SmallBusinesses.Include(x=>x.CustomerOrGuarantor).ToList();
+        }
        
     }
 }
