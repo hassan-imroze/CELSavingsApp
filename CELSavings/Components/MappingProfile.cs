@@ -47,8 +47,8 @@ namespace CELSavings
               ;
 
             CreateMap<SmallBusiness, SmallBusinessListDto>()
-               .ForMember(dto => dto.Status, opt => opt.MapFrom(m => m.SellingPrice == m.PaymentReceived ? "Completed" : (m.PaymentDueDate < DateTime.Today ? "Payment due" : "Active")))
-               .ForMember(dto => dto.StatusColor, opt => opt.MapFrom(m => m.SellingPrice == m.PaymentReceived ? "Green" : (m.PaymentDueDate < DateTime.Today ? "Red" : "Black")))
+               .ForMember(dto => dto.Status, opt => opt.MapFrom(m => m.SellingPrice == m.PaymentReceived ? "Completed" : (m.PaymentDueDate < DateTime.Today ? "Payment due" : "Pending")))
+               .ForMember(dto => dto.StatusColor, opt => opt.MapFrom(m => m.SellingPrice == m.PaymentReceived ? "green" : (m.PaymentDueDate < DateTime.Today ? "red" : "black")))
                .ForMember(dto => dto.DueDate, opt => opt.MapFrom(m => m.PaymentDueDate != null ? m.PaymentDueDate.Value.FormattedDate() : ""));
         }
     }
