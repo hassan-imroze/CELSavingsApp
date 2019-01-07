@@ -1,3 +1,67 @@
-﻿
+﻿@model CELSavings.ViewModels.SmallBusinessPaymentViewModel
+
+
 <h2>@ViewBag.Title</h2>
 
+
+@using (Html.BeginForm("AddPayment", "SmallBusinesses"))
+{
+
+
+    <div class="form-group">
+        <label>Product:</label>
+        <label>@Model.Product</label>
+    </div>
+
+    <div class="form-group">
+        <label>Customer Name:</label>
+        <label>@Model.CustomerName</label>
+    </div>
+
+    <div class="form-group">
+        <label>Selling Price</label>
+        @Html.TextBoxFor(m => m.SellingPrice, new { @readonly = "readonly", @type = "number", @class = "form-control pull-right" })
+    </div>
+
+    <div class="form-group">
+        <label>Payment Received</label>
+        @Html.TextBoxFor(m => m.PaymentReceived, new { @readonly = "readonly", @type = "number", @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Payment Due</label>
+        @Html.TextBoxFor(m => m.PaymentDue, new { @readonly = "readonly", @type = "number", @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <label>Payment Amount</label>
+        @Html.TextBoxFor(m => m.PaidAmount, new { @type = "number", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PaidAmount)
+    </div>
+
+    @Html.HiddenFor(m => m.SmallBusinessId);
+    @Html.AntiForgeryToken()
+    <div>
+        <button type="submit" class="btn btn-primary">Add Payment</button>
+    </div>
+
+}
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dynamicform")
+
+    <script>
+            $(document).ready(function () {
+                let errorMessage = "@TempData["ErrorMessage"]";
+                console.log(errorMessage);
+                if (errorMessage != null && errorMessage != '') {
+                    toastr.clear();
+                    var notify = toastr.error(errorMessage);
+                    var $notifyContainer = jQuery(notify).closest('.toast-top-right');
+                    $notifyContainer.css("margin-top", 65);
+                }
+            });
+    </script>
+}

@@ -311,6 +311,7 @@
     <Compile Include="Repository\RepositoryBase.cs" />
     <Compile Include="Repository\SavingAccountRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\SmallBusinessPaymentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-flatly.css" />
@@ -645,7 +646,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tesyt\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
