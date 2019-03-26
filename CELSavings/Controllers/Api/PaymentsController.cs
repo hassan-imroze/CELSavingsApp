@@ -59,5 +59,23 @@ namespace CELSavings.Controllers.Api
             return Ok(paymentSummary);
             
         }
+
+        [HttpGet]
+        [Route("api/payments/defaulters/")]
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
+        public IHttpActionResult GetPaymentDefaulters()
+        {
+            List<SavingAccount> savingsAccounts = new List<SavingAccount>();
+
+            using (var repo = new SavingAccountRepository())
+            {
+                savingsAccounts = repo.GetPayableSavingsAccounts();
+            }
+
+            return Ok(savingsAccounts.Select(Mapper.Map<SavingAccount, PaymentDefaultersDto>));
+
+           
+
+        }
     }
 }

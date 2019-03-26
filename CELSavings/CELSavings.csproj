@@ -240,6 +240,7 @@
     <Compile Include="CustomValidators\LessThanTotalBalance.cs" />
     <Compile Include="CustomValidators\NameShouldBeUnique.cs" />
     <Compile Include="Dto\PayableSavingAccountDto.cs" />
+    <Compile Include="Dto\PaymentDefaultersDto.cs" />
     <Compile Include="Dto\PaymentDto.cs" />
     <Compile Include="Dto\PaymentListDto.cs" />
     <Compile Include="Dto\SaveSmallBusinessDto.cs" />
@@ -642,10 +643,10 @@
     <Content Include="Views\SmallBusinesses\Index.cshtml" />
     <Content Include="Views\SmallBusinesses\Details.cshtml" />
     <Content Include="Views\SmallBusinesses\AddPayment.cshtml" />
+    <Content Include="Views\Payments\PaymentDefalters.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tesyt\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

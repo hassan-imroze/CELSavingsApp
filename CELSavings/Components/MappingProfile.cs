@@ -18,12 +18,19 @@ namespace CELSavings
 
             CreateMap<SavingAccount, PayableSavingAccountDto>()
                 .ForMember(dto => dto.SavingsAccountId, opt => opt.MapFrom(m => m.Id))
-                .ForMember(dto => dto.Name, opt => opt.MapFrom(m => m.Name))
                 .ForMember(dto => dto.PaymentMonth, 
                            opt => opt.MapFrom(
                                m => m.LastPaymentMonthDate == null ? 
                                GlobalConstants.STSTEMSTARTMONTH.FormattedMonth() : 
-                               m.LastPaymentMonthDate.Value.AddDays(2).FormattedMonth()));
+                               m.LastPaymentMonthDate.Value.LastDateOfMonth().AddDays(1).FormattedMonth()));
+
+            CreateMap<SavingAccount, PaymentDefaultersDto>()
+               .ForMember(dto => dto.SavingsAccountId, opt => opt.MapFrom(m => m.Id))
+               .ForMember(dto => dto.NotPaidMonth,
+                          opt => opt.MapFrom(
+                              m => m.LastPaymentMonthDate == null ?
+                              GlobalConstants.STSTEMSTARTMONTH.FormattedMonth() :
+                              m.LastPaymentMonthDate.Value.LastDateOfMonth().AddDays(1).FormattedMonth()));
 
             CreateMap<Payment, PaymentListDto>()
                .ForMember(dto => dto.AccountNo, opt => opt.MapFrom(m => m.SavingAccount.AccountNo))

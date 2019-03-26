@@ -1,0 +1,51 @@
+﻿
+
+<h2>@ViewBag.Title</h2>
+
+
+<br />
+
+<table id="tblSavingsAccounts" class="table table-bordered table-hover">
+    <thead class="thead-light">
+    </thead>
+    <tbody></tbody>
+</table>
+
+
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/datatables");
+
+    <script>
+        $(document).ready(function () {
+            var table = $("#tblSavingsAccounts").DataTable({
+                ajax: {
+                    url: "/api/payments/defaulters/",
+                    method: "GET",
+                    dataSrc: ""
+                },
+                pageLength: 6,
+                columns: [
+                    {
+                        data: "accountNo",
+                        title: "Account No"
+                    },
+                    {
+                        data: "name",
+                        title: "Name"
+                    },
+                    {
+                        data: "notPaidMonth",
+                        title: "Not Paid Month From"
+                    }
+                ]
+              
+
+            });
+
+           
+        });
+    </script>
+
+}

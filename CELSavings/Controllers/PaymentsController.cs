@@ -30,5 +30,12 @@ namespace CELSavings.Controllers
 
             return View("AddPayment");
         }
+
+        [Authorize(Roles = RoleName.CanManageSavingAccounts)]
+        public ActionResult PaymentDefalters()
+        {
+            ViewBag.Title = "Payment Defaulters";
+            return View();
+        }
     }
 }
