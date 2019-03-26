@@ -54,6 +54,7 @@ namespace CELSavings.Models
         public List<SmallBusinessInstallment> Installments { get; set; }
 
         public List<SmallBusinessPayment> Payments { get; set; }
+
     }
 
     public class SmallBusinessSavingAccount

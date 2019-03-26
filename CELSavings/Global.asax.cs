@@ -12,7 +12,7 @@ namespace CELSavings
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        protected void Application_Start()
+        protected void Application_Start() 
         {
             Mapper.Initialize(c => c.AddProfile<MappingProfile>());
             AreaRegistration.RegisterAllAreas();
